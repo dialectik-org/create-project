@@ -1,6 +1,6 @@
 {
   "name": "@dialectik/create-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "build/index.js",
   "types": "build/src/main.d.ts",
@@ -9,6 +9,9 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "create-project": "build/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
