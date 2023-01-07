@@ -1,0 +1,29 @@
+{
+  "name": "create-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./build && mkdirp ./build && shx cp -r ./src/template/ ./build/template && tsc",
+    "start": "npm run build && node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dialectik-org/create-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dialectik-org/create-project/issues"
+  },
+  "homepage": "https://github.com/dialectik-org/create-project#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "shx": "^0.3.4",
+    "typescript": "^4.9.4"
+  }
+}
