@@ -1,14 +1,22 @@
 #!/usr/bin/env node
-
-// Usage: npx create-my-template my-app
-
 const spawn = require('cross-spawn');
 const fs = require('fs');
 const path = require('path');
 
-// The first argument will be the project name.
-const projectName = process.argv[2];
+import { Command } from 'commander';
+const program = new Command("create-project");
 
+program
+  .description("Dialectik project creator")
+  .option('-n, --name <string>', 'set project name')
+  .option('--noinstall', 'do not perform npm install')
+  .parse(process.argv)
+
+const options = program.opts();
+
+// The first argument will be the project name.
+
+const projectName = options.name;
 
 // Create a project directory with the project name.
 const currentDir = process.cwd();
@@ -51,8 +59,10 @@ fs.writeFileSync(
 // the dependencies. We are using a third-party library
 // called `cross-spawn` for cross-platform support.
 // (Node has issues spawning child processes in Windows).
-process.chdir( projectDir )
-spawn.sync('npm', ['install'], { stdio: 'inherit' });
+if (options.noinstall != undefined && options.noinstall == false) {
+  process.chdir( projectDir )
+  spawn.sync('npm', ['install'], { stdio: 'inherit' });
+}
 
-console.log('Success! Your new project is ready.');
+console.log('Success! Your new Dialectik project is ready.');
 console.log(`Created ${projectName} at ${projectDir}`);
