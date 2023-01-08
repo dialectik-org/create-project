@@ -59,7 +59,7 @@ fs.writeFileSync(
 // the dependencies. We are using a third-party library
 // called `cross-spawn` for cross-platform support.
 // (Node has issues spawning child processes in Windows).
-if (options.noinstall != undefined && options.noinstall == false) {
+if (options.noinstall == undefined || (options.noinstall != undefined && options.noinstall == false)) {
   process.chdir( projectDir )
   spawn.sync('npm', ['install'], { stdio: 'inherit' });
 }
