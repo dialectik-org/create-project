@@ -14,7 +14,7 @@
     "create-project": "build/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node build/index.js -n test --noinstall",
     "build": "rimraf ./build && mkdirp ./build && shx cp -r ./src/template/ ./build/template && tsc",
     "start": "npm run build && node build/index.js"
   },
